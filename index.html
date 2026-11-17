@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#fdeef4" />
+<title>Istirahat Dulu, Sayang 🤍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1:#ffeef3;
+    --bg-2:#f3e8ff;
+    --bg-3:#fff7ec;
+    --pink-soft:#ffd5e0;
+    --pink:#ff9bb3;
+    --pink-deep:#ff7aa2;
+    --lav:#c9b6ff;
+    --lav-soft:#e8defc;
+    --cream:#fff7ec;
+    --ink:#5a4a55;
+    --ink-soft:#8b7886;
+    --white:#ffffff;
+    --glass:rgba(255,255,255,0.55);
+    --glass-strong:rgba(255,255,255,0.78);
+    --shadow:0 18px 50px -18px rgba(214,140,170,.35);
+    --radius:28px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Quicksand',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 80% at 0% 0%, #ffe3ec 0%, transparent 55%),
+      radial-gradient(120% 80% at 100% 10%, #ece1ff 0%, transparent 55%),
+      radial-gradient(120% 80% at 50% 100%, #fff3e2 0%, transparent 55%),
+      linear-gradient(180deg,#fff6f9 0%, #f7edff 50%, #fff8ef 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+    line-height:1.75;
+    min-height:100vh;
+  }
+  ::selection{background:var(--pink-soft);color:#7a3f5a}
+
+  /* ===== Floating Hearts Layer ===== */
+  .hearts-layer{
+    position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden;
+  }
+  .heart{
+    position:absolute;bottom:-40px;font-size:18px;
+    animation:floatUp linear forwards;
+    filter:drop-shadow(0 4px 6px rgba(255,150,180,.25));
+    opacity:.9;
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) rotate(0deg) scale(.6);opacity:0}
+    10%{opacity:.9}
+    50%{transform:translateY(-50vh) rotate(20deg) scale(1)}
+    100%{transform:translateY(-110vh) rotate(-20deg) scale(.7);opacity:0}
+  }
+
+  /* ===== Opening Screen ===== */
+  .opening{
+    position:fixed;inset:0;z-index:50;
+    display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(80% 60% at 50% 20%, #ffe6ef 0%, transparent 60%),
+      radial-gradient(80% 60% at 50% 90%, #ece1ff 0%, transparent 60%),
+      linear-gradient(180deg,#fff6f9,#f3e8ff);
+    transition:opacity .9s ease, transform .9s ease;
+    padding:24px;
+  }
+  .opening.hidden{opacity:0;transform:translateY(-30px);pointer-events:none}
+  .opening-inner{
+    max-width:560px;text-align:center;
+  }
+  .opening-line{
+    font-size:clamp(1.15rem,5.5vw,1.55rem);
+    color:var(--ink);font-weight:500;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .9s ease, transform .9s ease;
+    margin-bottom:.4rem;
+    letter-spacing:.2px;
+  }
+  .opening-line.show{opacity:1;transform:translateY(0)}
+  .opening-line.script{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(2rem,9vw,2.8rem);
+    color:var(--pink-deep);
+    font-weight:600;
+    margin:.5rem 0;
+    line-height:1.25;
+  }
+  .opening-line.small{font-size:clamp(1rem,4.5vw,1.2rem);color:var(--ink-soft)}
+  .opening-cta{
+    margin-top:2.4rem;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .opening-cta.show{opacity:1;transform:translateY(0)}
+
+  /* ===== Buttons ===== */
+  .btn{
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;font-size:1rem;
+    border:none;cursor:pointer;
+    padding:14px 26px;border-radius:999px;
+    background:linear-gradient(135deg,#ff9bb3,#c9a7ff);
+    color:#fff;
+    box-shadow:0 14px 30px -10px rgba(180,120,200,.55),inset 0 1px 0 rgba(255,255,255,.4);
+    transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    letter-spacing:.3px;
+    display:inline-flex;align-items:center;gap:8px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 22px 40px -12px rgba(180,120,200,.6)}
+  .btn:active{transform:translateY(-1px) scale(.99)}
+  .btn.soft{
+    background:var(--glass-strong);
+    color:var(--pink-deep);
+    box-shadow:0 12px 30px -14px rgba(180,120,200,.5),inset 0 0 0 1px rgba(255,255,255,.6);
+    backdrop-filter:blur(10px);
+  }
+  .btn.ghost{
+    background:transparent;color:var(--ink-soft);
+    box-shadow:inset 0 0 0 1.5px rgba(180,120,200,.35);
+  }
+  .btn.ghost:hover{color:var(--pink-deep);box-shadow:inset 0 0 0 1.5px var(--pink)}
+  .btn.big{padding:18px 36px;font-size:1.08rem}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:1.4rem}
+
+  /* ===== Main Container ===== */
+  main{position:relative;z-index:2}
+  .section{
+    min-height:auto;
+    padding:clamp(48px,11vw,90px) 22px;
+    display:flex;justify-content:center;
+  }
+  .card{
+    width:100%;max-width:640px;
+    background:var(--glass);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.6);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:clamp(26px,7vw,46px);
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 40%);
+    pointer-events:none;
+  }
+  .card > *{position:relative;z-index:1}
+
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--pink-deep);font-weight:600;
+    background:rgba(255,255,255,.6);
+    padding:6px 14px;border-radius:999px;
+    border:1px solid rgba(255,180,200,.5);
+    margin-bottom:18px;
+  }
+  h2.title{
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
+    font-size:clamp(2rem,8vw,2.8rem);
+    color:var(--pink-deep);
+    line-height:1.2;
+    margin-bottom:18px;
+  }
+  h3.sub{
+    font-weight:600;font-size:clamp(1.05rem,4.5vw,1.3rem);
+    color:#7a4a63;margin-bottom:10px;
+  }
+  p{margin-bottom:.9rem;color:var(--ink);font-weight:400}
+  p strong{color:var(--pink-deep);font-weight:700}
+  p.big{
+    font-size:clamp(1.15rem,5vw,1.4rem);
+    font-weight:600;color:#6a3a52;
+    line-height:1.6;
+  }
+  p.huge{
+    font-family:'Dancing Script',cursive;
+    font-weight:600;
+    font-size:clamp(2rem,9vw,2.6rem);
+    color:var(--pink-deep);
+    line-height:1.25;
+    text-align:center;
+    margin:1.2rem 0;
+  }
+  p.eng{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(1.6rem,7vw,2.1rem);
+    color:#8a6db0;font-weight:600;
+    text-align:center;
+    margin:1.2rem 0;
+    letter-spacing:.5px;
+  }
+  .divider-heart{
+    text-align:center;color:var(--pink);
+    font-size:1.2rem;margin:1.4rem 0;
+    opacity:.7;
+  }
+
+  /* ===== Section 1: Pesan untukmu (surat) ===== */
+  .letter{
+    background:linear-gradient(180deg,#fffdf9 0%, #fff5f8 100%);
+    border:1px solid #ffe0ea;
+    border-radius:24px;
+    padding:clamp(24px,7vw,40px);
+    box-shadow:0 18px 40px -18px rgba(214,140,170,.3);
+    position:relative;
+  }
+  .letter::after{
+    content:"🤍";position:absolute;top:18px;right:22px;font-size:1.4rem;opacity:.6;
+  }
+  .letter p{margin-bottom:.7rem}
+  .stamp{
+    display:inline-block;
+    font-family:'Dancing Script',cursive;
+    font-size:1.4rem;color:var(--pink-deep);
+    border:2px dashed var(--pink);
+    padding:8px 16px;border-radius:14px;
+    margin-top:8px;
+    transform:rotate(-3deg);
+  }
+
+  /* ===== Section 3: Personal ===== */
+  .personal-glow{
+    background:linear-gradient(135deg, rgba(255,214,228,.55), rgba(225,212,255,.45));
+    border-radius:24px;padding:clamp(22px,6vw,36px);
+    margin-top:1rem;
+  }
+  .hearts-mini{
+    position:relative;height:60px;margin:14px 0 4px;overflow:hidden;
+  }
+  .hearts-mini span{
+    position:absolute;bottom:0;font-size:1.2rem;
+    animation:miniFloat 4s ease-in-out infinite;
+  }
+  @keyframes miniFloat{
+    0%,100%{transform:translateY(0) rotate(-5deg);opacity:.4}
+    50%{transform:translateY(-26px) rotate(8deg);opacity:.9}
+  }
+
+  /* ===== Section 4: PERINGATAN ===== */
+  .warning{
+    background:linear-gradient(180deg,#fff7ef 0%, #fff0f5 100%);
+    border:2px dashed #ffb6c8;
+    border-radius:24px;
+    padding:clamp(24px,7vw,40px);
+    text-align:left;
+  }
+  .warning-title{
+    text-align:center;
+    font-family:'Quicksand',sans-serif;
+    font-weight:700;
+    color:#d4607f;
+    font-size:clamp(1rem,4.5vw,1.2rem);
+    letter-spacing:.2em;
+    margin-bottom:14px;
+  }
+  .warning-head{
+    text-align:center;font-weight:700;
+    font-size:clamp(1.2rem,5.5vw,1.55rem);
+    color:#7a3f5a;margin-bottom:18px;
+  }
+  .checklist{
+    list-style:none;display:grid;gap:10px;margin:14px 0;
+  }
+  .checklist li{
+    background:rgba(255,255,255,.7);
+    border:1px solid #ffe0ea;
+    border-radius:14px;
+    padding:12px 16px;
+    display:flex;align-items:center;gap:12px;
+    font-size:clamp(.95rem,4vw,1.05rem);
+  }
+  .checklist li .box{
+    width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,#ff9bb3,#c9a7ff);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:.85rem;flex-shrink:0;
+    box-shadow:0 4px 10px -3px rgba(180,120,200,.5);
+  }
+  .warning-foot{
+    text-align:center;margin-top:20px;
+    font-weight:600;color:#d4607f;
+    font-size:clamp(1.05rem,4.5vw,1.25rem);
+  }
+  .tiny-note{
+    text-align:center;color:var(--ink-soft);
+    font-size:.85rem;margin-top:8px;font-style:italic;
+  }
+
+  /* ===== Section 5: Hug game ===== */
+  .hug-area{
+    position:relative;
+    min-height:180px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:20px;
+    border-radius:20px;
+    background:linear-gradient(135deg, rgba(255,220,232,.5), rgba(230,215,255,.4));
+    margin-top:1rem;
+    overflow:hidden;
+  }
+  .hug-emoji{font-size:clamp(3.5rem,18vw,5rem);animation:hugPulse 2.2s ease-in-out infinite;transition:transform .4s ease}
+  @keyframes hugPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .hug-result{
+    margin-top:14px;text-align:center;
+    opacity:0;transform:translateY(8px);transition:all .5s ease;
+    max-height:0;overflow:hidden;
+  }
+  .hug-result.show{opacity:1;transform:translateY(0);max-height:600px}
+  .random-msg{
+    margin-top:14px;font-family:'Dancing Script',cursive;
+    font-size:1.6rem;color:var(--pink-deep);
+    text-align:center;
+    min-height:1.6rem;
+    transition:opacity .4s ease;
+  }
+
+  /* ===== Section 6: Chat bubble ===== */
+  .chat-wrap{
+    display:flex;flex-direction:column;gap:10px;
+    margin:14px 0;
+  }
+  .bubble{
+    max-width:88%;
+    padding:12px 18px;border-radius:20px;
+    font-size:clamp(.95rem,4vw,1.05rem);
+    line-height:1.6;
+    box-shadow:0 6px 16px -8px rgba(180,120,200,.4);
+    animation:bubbleIn .5s ease both;
+  }
+  .bubble.left{
+    align-self:flex-start;
+    background:var(--glass-strong);
+    border-bottom-left-radius:6px;
+    color:var(--ink);
+  }
+  .bubble.right{
+    align-self:flex-end;
+    background:linear-gradient(135deg,#ff9bb3,#c9a7ff);
+    color:#fff;border-bottom-right-radius:6px;
+    font-weight:500;
+  }
+  @keyframes bubbleIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .chat-result{
+    margin-top:10px;padding:14px;border-radius:18px;
+    background:rgba(255,255,255,.7);border:1px solid #ffe0ea;
+    opacity:0;max-height:0;overflow:hidden;
+    transition:opacity .5s ease,max-height .5s ease,transform .5s ease;
+    transform:translateY(8px);
+  }
+  .chat-result.show{opacity:1;max-height:500px;transform:translateY(0)}
+
+  /* ===== Section 9: interactive result ===== */
+  .result-box{
+    margin-top:1rem;padding:18px;border-radius:18px;
+    background:rgba(255,255,255,.7);border:1px solid #ffe0ea;
+    opacity:0;max-height:0;overflow:hidden;
+    transition:all .5s ease;transform:translateY(8px);
+  }
+  .result-box.show{opacity:1;max-height:500px;transform:translateY(0)}
+
+  /* ===== Ending overlay ===== */
+  .ending-overlay{
+    position:fixed;inset:0;z-index:60;
+    background:radial-gradient(120% 90% at 50% 30%, rgba(90,50,80,.55), rgba(40,20,40,.85));
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;text-align:center;
+    opacity:0;pointer-events:none;
+    transition:opacity 1s ease;
+  }
+  .ending-overlay.show{opacity:1;pointer-events:auto}
+  .ending-inner{max-width:540px;color:#fff}
+  .ending-inner p{
+    color:#ffe3ec;
+    font-size:clamp(1.15rem,5vw,1.45rem);
+    margin-bottom:.6rem;font-weight:500;
+    opacity:0;transform:translateY(10px);
+    transition:all .8s ease;
+  }
+  .ending-inner p.script{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(1.8rem,8vw,2.4rem);
+    color:#fff;
+  }
+  .ending-inner p.show{opacity:1;transform:translateY(0)}
+  .ending-heart{
+    font-size:3rem;margin-bottom:14px;
+    animation:hugPulse 2.4s ease-in-out infinite;
+  }
+
+  /* ===== Fade-in observer ===== */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ===== Confetti canvas ===== */
+  #confetti-canvas{
+    position:fixed;inset:0;pointer-events:none;z-index:55;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    text-align:center;padding:30px 20px 60px;
+    color:var(--ink-soft);font-size:.85rem;
+    position:relative;z-index:2;
+  }
+  footer .script{
+    font-family:'Dancing Script',cursive;
+    font-size:1.4rem;color:var(--pink-deep);
+    margin-bottom:6px;display:block;
+  }
+
+  /* ===== Floating mini side hearts ===== */
+  .side-hearts{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:3;
+  }
+
+  @media (max-width:480px){
+    .btn{padding:13px 22px;font-size:.96rem}
+    .card{padding:26px 22px}
+    .section{padding:44px 18px}
+  }
+
+  /* tiny heartbeat icon */
+  .heartbeat{display:inline-block;animation:beat 1.4s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}10%{transform:scale(1.18)}20%{transform:scale(1)}30%{transform:scale(1.12)}}
+</style>
+</head>
+<body>
+
+<!-- ===== Floating hearts layer ===== -->
+<div class="hearts-layer" id="heartsLayer"></div>
+
+<!-- ===== Opening Screen ===== -->
+<div class="opening" id="opening">
+  <div class="opening-inner">
+    <p class="opening-line" data-delay="200">Hei, kamu...</p>
+    <p class="opening-line script" data-delay="1200">Aku tahu kamu lagi capek.</p>
+    <p class="opening-line" data-delay="2400">Jadi sebelum kamu lanjut menjalani hari ini...</p>
+    <p class="opening-line small" data-delay="3400">boleh berhenti sebentar sama aku?</p>
+    <div class="opening-cta" data-delay="4400">
+      <button class="btn big" id="openBtn">
+        <span class="heartbeat">🤍</span> Klik kalau kamu lagi capek 🥺
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Main Content ===== -->
+<main>
+
+  <!-- Section 2: Pesan untukmu -->
+  <section class="section" id="s2">
+    <div class="card reveal">
+      <span class="eyebrow">Pesan untukmu</span>
+      <div class="letter">
+        <h2 class="title">Aku tahu kamu capek.</h2>
+        <p>Capek sama hari ini,<br>capek sama keadaan,<br>capek sama banyak hal yang mungkin bahkan nggak bisa kamu ceritain.</p>
+        <p>Dan kamu nggak harus selalu kelihatan kuat di depan aku.</p>
+        <p>Kalau mau istirahat, istirahatlah.</p>
+        <p>Kalau mau diam, aku temenin diam.</p>
+        <p>Kalau mau cerita, aku dengerin.</p>
+        <p>Kalau mau nangis...</p>
+        <p><strong>yaudah sini, nangisnya jangan sendirian.</strong></p>
+        <div class="divider-heart">🤍</div>
+        <p class="huge">Aku ada di sini untuk kamu, sayang.</p>
+        <div style="text-align:right;margin-top:18px">
+          <span class="stamp">— dari aku, untuk kamu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Personal -->
+  <section class="section" id="s3">
+    <div class="card reveal">
+      <span class="eyebrow">Antara kita berdua</span>
+      <h2 class="title">Kalau ada apa-apa, cerita ke aku.</h2>
+      <p>Sayang...</p>
+      <p>Kalau kamu lagi punya masalah, cerita ke aku.</p>
+      <p>Kalau ada sesuatu yang bikin kamu kepikiran, cerita.</p>
+      <p>Kalau kamu lagi sedih, cerita.</p>
+      <p>Kalau kamu lagi marah, cerita.</p>
+      <p>Kalau kamu cuma butuh seseorang buat dengerin tanpa menghakimi...</p>
+      <p class="huge">Aku ada.</p>
+      <p>Jangan merasa harus menyimpan semuanya sendirian.</p>
+      <p>Kamu nggak akan jadi beban buat aku hanya karena kamu ingin cerita.</p>
+
+      <div class="personal-glow">
+        <p class="eng">Aku pengen jadi tempat kamu pulang ketika dunia lagi terlalu berisik. 🤍</p>
+        <div class="hearts-mini" id="heartsMini"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: PERINGATAN -->
+  <section class="section" id="s4">
+    <div class="card reveal">
+      <div class="warning">
+        <p class="warning-title">⚠️ PERINGATAN KERAS ⚠️</p>
+        <p class="warning-head">Pacarku sedang kelelahan.</p>
+        <p style="text-align:center">Setelah dilakukan penelitian selama 0,5 detik, ditemukan bahwa pasien membutuhkan:</p>
+        <ul class="checklist">
+          <li><span class="box">✓</span> Tidur</li>
+          <li><span class="box">✓</span> Minum air</li>
+          <li><span class="box">✓</span> Makan</li>
+          <li><span class="box">✓</span> Jangan overthinking</li>
+          <li><span class="box">✓</span> Jangan terlalu keras sama diri sendiri</li>
+          <li><span class="box">✓</span> Dipeluk</li>
+          <li><span class="box">✓</span> Disayang</li>
+          <li><span class="box">✓</span> Ditemenin</li>
+          <li><span class="box">✓</span> Dan sedikit perhatian dari pacarnya</li>
+        </ul>
+        <p class="warning-foot">Jika pasien masih ngeyel dan bilang "aku gapapa"...</p>
+        <p class="warning-foot" style="font-size:1.4rem;color:#b34d6b">HARAP SEGERA HUBUNGI PACARNYA. 😭</p>
+        <p class="tiny-note">Nomor darurat: aku.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Hug game -->
+  <section class="section" id="s5">
+    <div class="card reveal">
+      <span class="eyebrow">Hadiah kecil</span>
+      <h2 class="title">Pelukan virtual</h2>
+      <p>Kadang pelukan kecil bisa bikin hari terasa lebih ringan. Mau?</p>
+
+      <div class="hug-area">
+        <div class="hug-emoji" id="hugEmoji">🫂</div>
+        <button class="btn big" id="hugBtn" style="margin-top:14px">Klik untuk mendapatkan pelukan virtual 🫂</button>
+
+        <div class="hug-result" id="hugResult">
+          <p class="huge">Pelukan berhasil dikirim. 🫂</p>
+          <p>Sayangnya masih versi digital.</p>
+          <p>Kalau aku ada di sebelah kamu...</p>
+          <p><strong>aku bakal kasih yang versi asli.</strong></p>
+          <button class="btn ghost" id="stillTiredBtn" style="margin-top:14px">Aku masih capek 🥺</button>
+          <p class="random-msg" id="randomMsg"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Boleh call? -->
+  <section class="section" id="s6">
+    <div class="card reveal">
+      <span class="eyebrow">Satu pertanyaan penting...</span>
+      <h2 class="title">Boleh call? 🥺📞</h2>
+
+      <div class="chat-wrap">
+        <div class="bubble left">Kalau kamu lagi capek dan pengen ada yang nemenin...</div>
+        <div class="bubble right">aku bisa nemenin kamu.</div>
+        <div class="bubble left">Kalau kamu mau cerita, aku dengerin.</div>
+        <div class="bubble left">Kalau kamu nggak mau cerita juga nggak apa-apa.</div>
+        <div class="bubble right"><strong>Kita call aja.</strong></div>
+        <div class="bubble right">Kamu nggak perlu ngomong banyak.</div>
+        <div class="bubble left">Kalau mau diam bareng juga boleh.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" id="callYes">Boleh 🤍</button>
+        <button class="btn soft" id="callNo">Nanti dulu 🥺</button>
+      </div>
+
+      <div class="chat-result" id="callResult"></div>
+    </div>
+  </section>
+
+  <!-- Section 7: Aku cuma punya kamu -->
+  <section class="section" id="s7">
+    <div class="card reveal">
+      <span class="eyebrow">Dan ada satu hal yang mau aku pastikan...</span>
+      <h2 class="title">Tetap kamu.</h2>
+      <p>Di antara banyak orang yang bisa aku temui...</p>
+      <p>banyak cerita yang bisa aku jalani...</p>
+      <p>dan banyak tempat yang bisa aku datangi...</p>
+      <p class="huge">aku tetap memilih kamu.</p>
+      <p>Karena buat aku, kamu bukan sekadar seseorang yang hadir.</p>
+      <p>Kamu adalah seseorang yang ingin aku pertahankan.</p>
+      <p>Kamu adalah orang yang paling aku sayang.</p>
+      <p>Kamu adalah orang yang ingin aku temani.</p>
+
+      <div class="personal-glow" style="margin-top:1.4rem;text-align:center">
+        <p class="eng">You're the only one I want. 🤍</p>
+        <p><strong>Yang aku pilih.</strong></p>
+        <p><strong>Yang aku sayang.</strong></p>
+        <p><strong>Yang aku perjuangkan.</strong></p>
+        <p class="huge" style="font-size:clamp(2.2rem,10vw,2.8rem)">Kamu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Kalau aku ada di sana -->
+  <section class="section" id="s8">
+    <div class="card reveal">
+      <span class="eyebrow">Bayangin sebentar</span>
+      <h2 class="title">Kalau sekarang aku ada di sebelah kamu...</h2>
+      <p>aku mungkin bakal duduk di samping kamu.</p>
+      <p>Nggak banyak ngomong.</p>
+      <p>Cuma nemenin.</p>
+      <p>Terus mungkin aku bakal nanya...</p>
+      <p class="big">"Udah makan?"<br>"Udah minum?"<br>"Masih capek?"</p>
+      <p>Terus setelah kamu bilang...</p>
+      <p class="huge" style="font-size:1.8rem">"iya..."</p>
+      <p>Aku bakal jawab:</p>
+      <p class="huge">"Yaudah, sini." 🫂</p>
+      <p class="eng">Istirahat di sini dulu.</p>
+    </div>
+  </section>
+
+  <!-- Section 9: Interactive -->
+  <section class="section" id="s9">
+    <div class="card reveal">
+      <span class="eyebrow">Coba kasih tau aku</span>
+      <h2 class="title">Sekarang gimana perasaan kamu?</h2>
+      <p>Aku pengen tau, dan aku nggak akan maksa kamu buat baik-baik aja kalau belum.</p>
+
+      <div class="btn-row">
+        <button class="btn" id="betterBtn">Aku udah agak mendingan 🤍</button>
+        <button class="btn soft" id="stillCapekBtn">Aku masih capek 🥺</button>
+      </div>
+
+      <div class="result-box" id="interactiveResult"></div>
+    </div>
+  </section>
+
+  <!-- Section 10: Ending -->
+  <section class="section" id="s10">
+    <div class="card reveal">
+      <span class="eyebrow">Sebelum kamu tutup layarnya</span>
+      <h2 class="title">Jadi...</h2>
+      <p>Kalau hari ini terasa berat...</p>
+      <p>jangan paksa dirimu menyelesaikan semuanya sekaligus.</p>
+      <p>Tarik napas.</p>
+      <p>Minum air.</p>
+      <p>Makan.</p>
+      <p>Rebahan.</p>
+      <p>Pejamkan mata.</p>
+      <p>Dan ingat...</p>
+      <p class="big"><strong>Kamu disayang.</strong></p>
+      <p class="big"><strong>Kamu berharga.</strong></p>
+      <p class="big"><strong>Kamu nggak sendirian.</strong></p>
+
+      <div class="divider-heart">🤍</div>
+
+      <p class="huge">Aku ada di sini untuk kamu, sayang. 🤍</p>
+      <p>Kalau ada apa-apa, cerita ke aku.</p>
+      <p>Kalau kamu capek, istirahat sama aku.</p>
+      <p>Kalau kamu sedih, datang ke aku.</p>
+      <p>Kalau kamu butuh seseorang...</p>
+      <p class="huge" style="font-size:1.9rem">Aku ada.</p>
+
+      <div class="divider-heart">🤍</div>
+
+      <p class="eng">Because at the end of every day, I still choose you.</p>
+      <p class="huge" style="font-size:1.8rem">Selalu kamu. 🤍</p>
+
+      <div class="btn-row">
+        <button class="btn big" id="finalHugBtn">Peluk aku 🫂</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="script">Dibuat tulus untuk kamu yang lagi capek.</span>
+    <span>Istirahat dulu, sayang. Aku di sini. 🤍</span>
+  </footer>
+</main>
+
+<!-- ===== Ending overlay ===== -->
+<div class="ending-overlay" id="endingOverlay">
+  <div class="ending-inner">
+    <div class="ending-heart">🫂</div>
+    <p class="script" data-delay="300">🫂 *peluk erat*</p>
+    <p data-delay="1400">Udah ya, sayang...</p>
+    <p data-delay="2600">Sekarang istirahat.</p>
+    <p class="script" data-delay="3800">Aku di sini. 🤍</p>
+  </div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ===== Opening sequence ===== */
+  const opening = document.getElementById('opening');
+  const openingLines = opening.querySelectorAll('.opening-line, .opening-cta');
+  const openBtn = document.getElementById('openBtn');
+
+  // Show opening lines one by one
+  openingLines.forEach(el=>{
+    const delay = parseInt(el.dataset.delay||'0',10);
+    setTimeout(()=>el.classList.add('show'),delay);
+  });
+
+  openBtn.addEventListener('click', ()=>{
+    burstHearts(openBtn, 14);
+    smallConfetti();
+    setTimeout(()=>{
+      opening.classList.add('hidden');
+      // start floating hearts background slowly
+      startBackgroundHearts();
+      // reveal first section
+      setTimeout(()=>scrollToSection('s2'),400);
+    }, 350);
+  });
+
+  /* ===== Floating background hearts ===== */
+  const heartsLayer = document.getElementById('heartsLayer');
+  const heartChars = ['🤍','💗','💕','🩷','💓','💕','❤️','💞'];
+  let heartsStarted = false;
+  function startBackgroundHearts(){
+    if(heartsStarted) return;
+    heartsStarted = true;
+    setInterval(()=>{
+      if(Math.random() > 0.55) return; // not too many
+      const h = document.createElement('span');
+      h.className='heart';
+      h.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+      h.style.left = (Math.random()*100)+'%';
+      h.style.fontSize = (12 + Math.random()*22)+'px';
+      h.style.animationDuration = (6 + Math.random()*5)+'s';
+      h.style.opacity = (0.4 + Math.random()*0.5);
+      heartsLayer.appendChild(h);
+      setTimeout(()=>h.remove(), 12000);
+    }, 700);
+  }
+
+  /* mini hearts in section 3 */
+  const heartsMini = document.getElementById('heartsMini');
+  if(heartsMini){
+    const chars = ['🤍','💗','💕','🩷','💓'];
+    for(let i=0;i<7;i++){
+      const s = document.createElement('span');
+      s.textContent = chars[i%chars.length];
+      s.style.left = (10+i*13)+'%';
+      s.style.fontSize = (16+Math.random()*10)+'px';
+      s.style.animationDelay = (Math.random()*2)+'s';
+      s.style.animationDuration = (3+Math.random()*2)+'s';
+      heartsMini.appendChild(s);
+    }
+  }
+
+  /* ===== Burst hearts from an element ===== */
+  function burstHearts(el, count){
+    if(!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+    for(let i=0;i<count;i++){
+      const h = document.createElement('span');
+      h.className='heart';
+      h.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+      h.style.left = (cx/window.innerWidth*100)+'%';
+      h.style.bottom = ((window.innerHeight-cy)/window.innerHeight*100)+'%';
+      h.style.fontSize = (16+Math.random()*16)+'px';
+      h.style.animationDuration = (2.5+Math.random()*1.8)+'s';
+      h.style.opacity = '1';
+      heartsLayer.appendChild(h);
+      setTimeout(()=>h.remove(), 4500);
+    }
+  }
+
+  /* ===== Confetti ===== */
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  let confettiPieces = [];
+  let confettiRunning = false;
+  const confettiColors = ['#ff9bb3','#c9a7ff','#ffd5e0','#ffe6a8','#ffb3c8','#e8defc','#fff'];
+
+  function smallConfetti(){
+    spawnConfetti(60);
+  }
+  function bigConfetti(){
+    spawnConfetti(180);
+  }
+  function spawnConfetti(n){
+    for(let i=0;i<n;i++){
+      confettiPieces.push({
+        x: Math.random()*canvas.width,
+        y: -20 - Math.random()*200,
+        r: 4 + Math.random()*6,
+        c: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+        vx: -2 + Math.random()*4,
+        vy: 1 + Math.random()*3,
+        rot: Math.random()*Math.PI*2,
+        vr: -0.2 + Math.random()*0.4,
+        shape: Math.random()>0.5 ? 'rect' : 'circle',
+        life: 0,
+        maxLife: 280 + Math.random()*120
+      });
+    }
+    if(!confettiRunning){
+      confettiRunning = true;
+      requestAnimationFrame(animateConfetti);
+    }
+  }
+  function animateConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confettiPieces.forEach(p=>{
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.04;
+      p.rot += p.vr;
+      p.life++;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.c;
+      ctx.globalAlpha = Math.max(0, 1 - p.life/p.maxLife);
+      if(p.shape==='rect'){
+        ctx.fillRect(-p.r, -p.r*0.6, p.r*2, p.r*1.2);
+      } else {
+        ctx.beginPath();
+        ctx.arc(0,0,p.r,0,Math.PI*2);
+        ctx.fill();
+      }
+      // heart shape occasionally
+      if(p.shape==='rect' && p.r>5){
+        ctx.font = (p.r*1.4)+'px serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='middle';
+        ctx.fillText('🤍',0,0);
+      }
+      ctx.restore();
+    });
+    confettiPieces = confettiPieces.filter(p => p.life < p.maxLife && p.y < canvas.height+50);
+    if(confettiPieces.length > 0){
+      requestAnimationFrame(animateConfetti);
+    } else {
+      confettiRunning = false;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+  }
+
+  /* ===== Reveal on scroll ===== */
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  reveals.forEach(r=>io.observe(r));
+
+  /* ===== Smooth scroll helper ===== */
+  function scrollToSection(id){
+    const el = document.getElementById(id);
+    if(el){
+      el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  }
+
+  /* ===== Section 5: Hug game ===== */
+  const hugBtn = document.getElementById('hugBtn');
+  const hugResult = document.getElementById('hugResult');
+  const hugEmoji = document.getElementById('hugEmoji');
+  const stillTiredBtn = document.getElementById('stillTiredBtn');
+  const randomMsg = document.getElementById('randomMsg');
+  let hugShown = false;
+
+  hugBtn.addEventListener('click', ()=>{
+    if(!hugShown){
+      hugResult.classList.add('show');
+      hugShown = true;
+    }
+    // burst
+    burstHearts(hugEmoji, 18);
+    smallConfetti();
+    // bounce emoji
+    hugEmoji.style.transform = 'scale(1.4)';
+    setTimeout(()=>{hugEmoji.style.transform=''},400);
+    randomMsg.textContent = '';
+  });
+
+  const randomMessages = [
+    "Sini dulu.",
+    "Nggak apa-apa, istirahat.",
+    "Aku tahu kamu belum baik-baik aja.",
+    "Nggak perlu pura-pura kuat sama aku.",
+    "Aku temenin.",
+    "Udah, jangan mikirin semuanya sekarang.",
+    "Kamu boleh istirahat.",
+    "Aku masih di sini kok."
+  ];
+  let lastRandom = -1;
+  stillTiredBtn.addEventListener('click', ()=>{
+    let idx;
+    do { idx = Math.floor(Math.random()*randomMessages.length); }
+    while(idx === lastRandom && randomMessages.length>1);
+    lastRandom = idx;
+    randomMsg.style.opacity = '0';
+    setTimeout(()=>{
+      randomMsg.textContent = randomMessages[idx];
+      randomMsg.style.opacity = '1';
+    }, 200);
+    burstHearts(stillTiredBtn, 6);
+  });
+
+  /* ===== Section 6: Call buttons ===== */
+  const callYes = document.getElementById('callYes');
+  const callNo = document.getElementById('callNo');
+  const callResult = document.getElementById('callResult');
+
+  callYes.addEventListener('click', ()=>{
+    callResult.innerHTML = `
+      <p class="huge" style="font-size:1.8rem">YAY 😭🤍</p>
+      <p>Berarti sekarang waktunya aku nemenin kamu.</p>
+      <p><strong>Call me, sayang.</strong></p>
+      <p style="margin-top:.6rem">Aku tunggu. 🤍</p>
+    `;
+    callResult.classList.add('show');
+    burstHearts(callYes, 22);
+    smallConfetti();
+  });
+
+  callNo.addEventListener('click', ()=>{
+    callResult.innerHTML = `
+      <p>Okay...</p>
+      <p>Nggak apa-apa.</p>
+      <p>Kalau nanti kamu sudah siap, aku tetap ada.</p>
+      <p><strong>Jangan lupa istirahat ya, sayang. 🤍</strong></p>
+    `;
+    callResult.classList.add('show');
+    burstHearts(callNo, 8);
+  });
+
+  /* ===== Section 9: interactive ===== */
+  const betterBtn = document.getElementById('betterBtn');
+  const stillCapekBtn = document.getElementById('stillCapekBtn');
+  const interactiveResult = document.getElementById('interactiveResult');
+
+  betterBtn.addEventListener('click', ()=>{
+    interactiveResult.innerHTML = `
+      <p class="huge" style="font-size:1.9rem">YESSSS 😭🤍</p>
+      <p>Mission accomplished.</p>
+      <p>Tapi jangan langsung sok kuat lagi ya.</p>
+      <p style="margin-top:.5rem"><strong>Pelan-pelan aja, aku tetap di sini.</strong></p>
+    `;
+    interactiveResult.classList.add('show');
+    burstHearts(betterBtn, 20);
+    bigConfetti();
+  });
+
+  stillCapekBtn.addEventListener('click', ()=>{
+    interactiveResult.innerHTML = `
+      <p>Yaudah...</p>
+      <p>Nggak apa-apa.</p>
+      <p>Kamu nggak harus langsung baik-baik aja.</p>
+      <p>Pelan-pelan aja.</p>
+      <p class="huge" style="font-size:1.8rem">Aku di sini.</p>
+    `;
+    interactiveResult.classList.add('show');
+    burstHearts(stillCapekBtn, 10);
+  });
+
+  /* ===== Section 10: Final hug ===== */
+  const finalHugBtn = document.getElementById('finalHugBtn');
+  const endingOverlay = document.getElementById('endingOverlay');
+
+  finalHugBtn.addEventListener('click', ()=>{
+    bigConfetti();
+    burstHearts(finalHugBtn, 30);
+    endingOverlay.classList.add('show');
+    // spawn many hearts in overlay
+    const overlayHearts = setInterval(()=>{
+      if(!endingOverlay.classList.contains('show')){clearInterval(overlayHearts);return;}
+      const h = document.createElement('span');
+      h.className='heart';
+      h.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+      h.style.left = (Math.random()*100)+'%';
+      h.style.bottom = '0';
+      h.style.fontSize = (14+Math.random()*20)+'px';
+      h.style.animationDuration = (5+Math.random()*4)+'s';
+      h.style.opacity = '0.9';
+      heartsLayer.appendChild(h);
+      setTimeout(()=>h.remove(), 9000);
+    }, 250);
+
+    // show ending messages
+    const msgs = endingOverlay.querySelectorAll('p');
+    msgs.forEach(m=>m.classList.remove('show'));
+    msgs.forEach(m=>{
+      const delay = parseInt(m.dataset.delay||'0',10);
+      setTimeout(()=>m.classList.add('show'), delay);
+    });
+
+    // prevent body scroll
+    document.body.style.overflow = 'hidden';
+  });
+
+  /* ===== Tiny typing effect for opening subline (optional nicety) ===== */
+  // Already handled with staggered fade-ins; keeping simple to avoid errors.
+
+  /* ===== Smooth scrolling for anchor links if any ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',(e)=>{
+      const id = a.getAttribute('href').slice(1);
+      if(document.getElementById(id)){
+        e.preventDefault();
+        scrollToSection(id);
+      }
+    });
+  });
+
+  /* ===== Resume scroll when ending overlay clicked elsewhere? No — keep it. ===== */
+
+})();
+</script>
+</body>
+</html>
